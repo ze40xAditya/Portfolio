@@ -56,7 +56,7 @@ export function Footer() {
             />
           </div>
           <span className="font-bold text-2xl tracking-tight text-foreground">
-            Aditya<span className="text-primary">.</span>
+            <span className="text-primary">Aditya</span> Chaturvedi.
           </span>
         </div>
 
