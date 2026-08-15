@@ -24,8 +24,8 @@ export const portfolioData = {
     "I love learning! I've been certified by NVIDIA, Oracle, LinkedIn, and Coursera in areas ranging from Anomaly Detection and Investment Risk Management to Data Analytics."
   ],
   contact: [
-    "You can reach me directly at adityachaturvedi26@gmail.com. You can also find my LinkedIn and GitHub profiles linked in the navigation bar above!",
-    "The best way to get in touch is via email at adityachaturvedi26@gmail.com, or through my LinkedIn. Let's connect!"
+    "You can reach me directly at adityachaturvedi361@gmail.com. You can also find my LinkedIn and GitHub profiles linked in the navigation bar above!",
+    "The best way to get in touch is via email at adityachaturvedi361@gmail.com, or through my LinkedIn. Let's connect!"
   ]
 };
 

@@ -73,7 +73,7 @@ export function Footer() {
             <GithubIcon className="w-5 h-5" />
             <span className="sr-only">GitHub</span>
           </a>
-          <a href="mailto:adityachaturvedi26@gmail.com" className="w-12 h-12 rounded-full bg-accent hover:bg-primary/20 flex items-center justify-center text-foreground hover:text-primary transition-colors border border-border">
+          <a href="mailto:adityachaturvedi361@gmail.com" className="w-12 h-12 rounded-full bg-accent hover:bg-primary/20 flex items-center justify-center text-foreground hover:text-primary transition-colors border border-border">
             <Mail className="w-5 h-5" />
             <span className="sr-only">Email</span>
           </a>

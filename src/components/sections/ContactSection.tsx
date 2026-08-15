@@ -126,11 +126,11 @@ export function ContactSection() {
                 DIRECT INBOX
               </span>
               <a
-                href="mailto:adityachaturvedi26@gmail.com"
+                href="mailto:adityachaturvedi361@gmail.com"
                 className="group flex items-center justify-between text-lg sm:text-xl font-mono text-foreground hover:text-primary transition-colors py-1"
               >
                 <span className="underline underline-offset-8 decoration-white/20 group-hover:decoration-primary transition-colors">
-                  adityachaturvedi26@gmail.com
+                  adityachaturvedi361@gmail.com
                 </span>
                 <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" />
               </a>

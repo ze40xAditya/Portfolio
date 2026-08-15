@@ -76,26 +76,22 @@ export function ExperienceSection() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                       {/* Card Component placed on Left (isEven) or Right (!isEven) */}
                       <div
-                        className={`pl-10 md:pl-0 ${
+                        className={`pl-10 md:pl-0 text-left ${
                           isEven
-                            ? "md:col-start-1 md:pr-12 md:text-right"
-                            : "md:col-start-2 md:pl-12 md:text-left"
+                            ? "md:col-start-1 md:pr-12"
+                            : "md:col-start-2 md:pl-12"
                         }`}
                       >
-                        <div className="group/card relative p-8 rounded-xl bg-card/40 backdrop-blur-2xl border border-white/10 hover:border-primary/50 transition-all duration-300 overflow-hidden shadow-xl hover:shadow-[0_0_30px_rgba(168,85,247,0.12)]">
+                        <div className="group/card relative p-8 rounded-xl bg-card/40 backdrop-blur-2xl border border-white/10 hover:border-primary/50 transition-all duration-300 overflow-hidden shadow-xl hover:shadow-[0_0_30px_rgba(168,85,247,0.12)] text-left">
                           {/* Top Accent Gradient Border Line */}
                           <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500" />
                           
                           {/* Subtle Card Background Glow */}
                           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-                          <div className="relative z-10 space-y-4">
+                          <div className="relative z-10 space-y-4 text-left">
                             {/* Meta Duration Badge */}
-                            <div
-                              className={`flex items-center gap-2 ${
-                                isEven ? "md:justify-end" : "md:justify-start"
-                              }`}
-                            >
+                            <div className="flex items-center justify-start gap-2">
                               <span className="inline-flex items-center gap-2 text-xs font-mono font-semibold text-primary bg-primary/10 border border-primary/20 px-3.5 py-1 rounded-full uppercase tracking-wider">
                                 <Calendar className="w-3.5 h-3.5" />
                                 {exp.duration}
@@ -103,25 +99,20 @@ export function ExperienceSection() {
                             </div>
 
                             {/* Title & Company */}
-                            <div>
+                            <div className="text-left">
                               <h3 className="text-2xl sm:text-3xl font-bold text-foreground group-hover/card:text-primary transition-colors leading-tight">
                                 {exp.title}
                               </h3>
-                              <p className="text-base text-foreground/80 font-medium pt-1 flex items-center gap-2 justify-start md:justify-inherit">
+                              <p className="text-base text-foreground/80 font-medium pt-1 flex items-center justify-start gap-2">
                                 <Briefcase className="w-4 h-4 text-primary/70 inline" />
                                 <span>{exp.company}</span>
                               </p>
                             </div>
 
                             {/* Responsibilities Bullet List */}
-                            <ul className="space-y-2 pt-2 text-sm text-muted-foreground font-light leading-relaxed">
+                            <ul className="space-y-2 pt-2 text-sm text-muted-foreground font-light leading-relaxed text-left">
                               {exp.responsibilities.map((resp, i) => (
-                                <li
-                                  key={i}
-                                  className={`flex items-start gap-2 ${
-                                    isEven ? "md:flex-row-reverse" : "md:flex-row"
-                                  }`}
-                                >
+                                <li key={i} className="flex items-start gap-2 justify-start">
                                   <span className="w-1.5 h-1.5 rounded-full bg-primary/70 mt-2 shrink-0" />
                                   <span>{resp}</span>
                                 </li>
@@ -130,11 +121,7 @@ export function ExperienceSection() {
 
                             {/* Skills Tags */}
                             {exp.skills && (
-                              <div
-                                className={`flex flex-wrap gap-2 pt-4 border-t border-white/10 ${
-                                  isEven ? "md:justify-end" : "md:justify-start"
-                                }`}
-                              >
+                              <div className="flex flex-wrap gap-2 pt-4 border-t border-white/10 justify-start">
                                 {exp.skills.map((skill, i) => (
                                   <Badge
                                     key={i}
