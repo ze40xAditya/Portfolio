@@ -1,0 +1,21 @@
+{
+  "name": "Aditya Chaturvedi Portfolio",
+  "short_name": "Aditya Portfolio",
+  "description": "Portfolio of Aditya Chaturvedi — B.Tech Computer Science Engineer & Data Analytics Intern specializing in AI Agents, Power BI, Python, and Product Strategy.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050505",
+  "theme_color": "#050505",
+  "icons": [
+    {
+      "src": "/AC-logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/AC-logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

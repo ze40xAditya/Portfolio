@@ -1,7 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
+import { Briefcase, Calendar } from "lucide-react";
+import { serif } from "@/app/fonts";
+import { ScrollRevealText, ScrollRevealCard } from "@/components/ui/ScrollReveal";
 
 export function ExperienceSection() {
   const experiences: { title: string; company: string; duration: string; responsibilities: string[]; skills?: string[]; }[] = [
@@ -41,85 +43,118 @@ export function ExperienceSection() {
   ];
 
   return (
-    <section id="experience" className="py-24 relative overflow-hidden bg-background">
-      {/* Decorative gradient for depth */}
-      <div className="absolute left-0 top-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
+    <section id="experience" className="py-28 relative overflow-hidden bg-background border-t border-border/30">
+      {/* Background subtle radial ambient glow */}
+      <div className="absolute left-1/2 top-1/3 -translate-x-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[160px] pointer-events-none" />
 
-      <div className="container px-4 md:px-8 relative z-10 max-w-5xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-2 text-foreground text-center md:text-left">
-            Engineering Success Stories
+      <div className="container px-4 sm:px-6 md:px-10 relative z-10 max-w-7xl mx-auto">
+        <ScrollRevealText className="flex flex-col items-start mb-16">
+          <div className="text-xs font-mono tracking-[0.25em] text-primary uppercase mb-3">
+            Career Progression
+          </div>
+          <h2 className={`${serif.className} text-4xl sm:text-5xl md:text-7xl font-normal tracking-tight text-foreground`}>
+            Experience & Industry Roles
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-primary to-transparent rounded-full mx-auto md:mx-0 mt-6"></div>
-        </motion.div>
+        </ScrollRevealText>
 
-        <div className="relative flex flex-col gap-6">
-          {/* Vertical Timeline Line */}
-          <div className="absolute left-8 top-4 bottom-4 w-px bg-gradient-to-b from-primary/50 via-primary/20 to-transparent hidden md:block" />
+        {/* Centered Alternating Timeline Grid */}
+        <div className="relative pt-4 pb-8">
+          {/* Center Vertical Timeline Line (Visible on Desktop) */}
+          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary/50 via-primary/20 to-transparent -translate-x-[0.5px]" />
 
-          {experiences.map((exp, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="relative group"
-            >
-              {/* Timeline Dot */}
-              <div className="absolute left-[28px] top-10 w-3 h-3 bg-background border-2 border-primary rounded-full z-10 hidden md:block group-hover:bg-primary group-hover:shadow-[0_0_15px_rgba(var(--primary-rgb),0.8)] transition-all duration-300" />
+          <div className="space-y-12">
+            {experiences.map((exp, index) => {
+              const isEven = index % 2 === 0; // Even indices go Left, Odd go Right
 
-              <div className="md:ml-20 p-6 md:p-8 rounded-[2rem] bg-card/40 backdrop-blur-xl border border-border/40 hover:border-primary/40 transition-all duration-500 hover:bg-card/60 relative overflow-hidden group-hover:shadow-2xl group-hover:shadow-primary/5">
-                
-                {/* Subtle Hover Gradient Inside Card */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              return (
+                <ScrollRevealCard key={index} delay={index * 0.1}>
+                  <div className="relative group">
+                    {/* Glowing Center Node Dot */}
+                    <div className="absolute left-4 md:left-1/2 top-8 w-4 h-4 rounded-full bg-background border-2 border-primary -translate-x-[7.5px] md:-translate-x-1/2 z-20 group-hover:bg-primary group-hover:shadow-[0_0_20px_rgba(168,85,247,0.9)] group-hover:scale-125 transition-all duration-300" />
 
-                <div className="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-                  
-                  {/* Left: Role & Company */}
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-foreground mb-1 group-hover:text-primary transition-colors">
-                      {exp.title} <span className="text-muted-foreground font-normal">— {exp.company}</span>
-                    </h3>
-                    <p className="text-sm text-muted-foreground font-medium uppercase tracking-wider mb-4">
-                      {exp.duration}
-                    </p>
-                    
-                    <ul className="space-y-2 mt-4">
-                      {exp.responsibilities.map((resp, i) => (
-                        <li key={i} className="flex items-start text-sm text-foreground/80 leading-relaxed">
-                          <span className="w-1.5 h-1.5 rounded-full bg-primary/50 mr-3 mt-1.5 shrink-0" />
-                          {resp}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                    {/* Alternating 2-Column Grid Row */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                      {/* Card Component placed on Left (isEven) or Right (!isEven) */}
+                      <div
+                        className={`pl-10 md:pl-0 ${
+                          isEven
+                            ? "md:col-start-1 md:pr-12 md:text-right"
+                            : "md:col-start-2 md:pl-12 md:text-left"
+                        }`}
+                      >
+                        <div className="group/card relative p-8 rounded-xl bg-card/40 backdrop-blur-2xl border border-white/10 hover:border-primary/50 transition-all duration-300 overflow-hidden shadow-xl hover:shadow-[0_0_30px_rgba(168,85,247,0.12)]">
+                          {/* Top Accent Gradient Border Line */}
+                          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500" />
+                          
+                          {/* Subtle Card Background Glow */}
+                          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-                  {/* Right: Skills Tags */}
-                  {exp.skills && (
-                    <div className="flex flex-wrap md:flex-col lg:flex-row gap-2 shrink-0 md:min-w-[200px] justify-start md:justify-end mt-4 md:mt-0">
-                      {exp.skills.map((skill, i) => (
-                        <Badge 
-                          key={i} 
-                          variant="outline" 
-                          className="px-4 py-1.5 rounded-full bg-background/50 border-border/50 text-foreground text-xs uppercase tracking-wider hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors cursor-default"
-                        >
-                          {skill}
-                        </Badge>
-                      ))}
+                          <div className="relative z-10 space-y-4">
+                            {/* Meta Duration Badge */}
+                            <div
+                              className={`flex items-center gap-2 ${
+                                isEven ? "md:justify-end" : "md:justify-start"
+                              }`}
+                            >
+                              <span className="inline-flex items-center gap-2 text-xs font-mono font-semibold text-primary bg-primary/10 border border-primary/20 px-3.5 py-1 rounded-full uppercase tracking-wider">
+                                <Calendar className="w-3.5 h-3.5" />
+                                {exp.duration}
+                              </span>
+                            </div>
+
+                            {/* Title & Company */}
+                            <div>
+                              <h3 className="text-2xl sm:text-3xl font-bold text-foreground group-hover/card:text-primary transition-colors leading-tight">
+                                {exp.title}
+                              </h3>
+                              <p className="text-base text-foreground/80 font-medium pt-1 flex items-center gap-2 justify-start md:justify-inherit">
+                                <Briefcase className="w-4 h-4 text-primary/70 inline" />
+                                <span>{exp.company}</span>
+                              </p>
+                            </div>
+
+                            {/* Responsibilities Bullet List */}
+                            <ul className="space-y-2 pt-2 text-sm text-muted-foreground font-light leading-relaxed">
+                              {exp.responsibilities.map((resp, i) => (
+                                <li
+                                  key={i}
+                                  className={`flex items-start gap-2 ${
+                                    isEven ? "md:flex-row-reverse" : "md:flex-row"
+                                  }`}
+                                >
+                                  <span className="w-1.5 h-1.5 rounded-full bg-primary/70 mt-2 shrink-0" />
+                                  <span>{resp}</span>
+                                </li>
+                              ))}
+                            </ul>
+
+                            {/* Skills Tags */}
+                            {exp.skills && (
+                              <div
+                                className={`flex flex-wrap gap-2 pt-4 border-t border-white/10 ${
+                                  isEven ? "md:justify-end" : "md:justify-start"
+                                }`}
+                              >
+                                {exp.skills.map((skill, i) => (
+                                  <Badge
+                                    key={i}
+                                    variant="outline"
+                                    className="px-3 py-1 rounded-md bg-white/5 border-white/10 text-foreground font-mono text-xs uppercase tracking-wider hover:bg-primary hover:text-primary-foreground transition-colors cursor-default"
+                                  >
+                                    {skill}
+                                  </Badge>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  )}
-                  
-                </div>
-              </div>
-            </motion.div>
-          ))}
+                  </div>
+                </ScrollRevealCard>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

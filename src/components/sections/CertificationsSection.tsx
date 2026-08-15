@@ -3,7 +3,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
-import { ExternalLink, Award } from "lucide-react";
+import { ArrowUpRight, Award, ShieldCheck } from "lucide-react";
+import { serif } from "@/app/fonts";
 
 export function CertificationsSection() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -29,14 +30,14 @@ export function CertificationsSection() {
       organization: "NVIDIA",
       category: "AI & ML",
       date: "Aug 2025",
-      skills: ["Anomaly Detection", "Data training"],
+      skills: ["Anomaly Detection", "Data Training"],
     },
     {
       title: "Fundamentals of Deep Learning",
       organization: "NVIDIA",
       category: "AI & ML",
       date: "Mar 2025",
-      skills: ["Deep Learning", "Data training"],
+      skills: ["Deep Learning", "Neural Nets"],
     },
     {
       title: "Execute 4.0 Hackathon – E-Summit'25",
@@ -50,7 +51,7 @@ export function CertificationsSection() {
       organization: "McKinsey & Company",
       category: "Product & Leadership",
       date: "Jul 2025",
-      skills: ["Project Management", "Planning"],
+      skills: ["Project Management", "Strategy"],
     },
     {
       title: "Atlassian Agile Project Management",
@@ -101,37 +102,44 @@ export function CertificationsSection() {
     : certifications.filter(c => c.category === activeCategory);
 
   return (
-    <section id="certifications" className="py-32 relative overflow-hidden bg-background">
-      <div className="container px-4 md:px-8 relative z-10 max-w-7xl mx-auto">
+    <section id="certifications" className="py-28 relative overflow-hidden bg-background border-t border-border/30">
+      {/* Ambient background glow */}
+      <div className="absolute right-0 top-1/4 w-[550px] h-[550px] bg-primary/5 rounded-full blur-[150px] pointer-events-none" />
+
+      <div className="container px-4 sm:px-6 md:px-10 relative z-10 max-w-7xl mx-auto">
         
-        <div className="flex flex-col items-center text-center mb-16">
+        <div className="flex flex-col items-start mb-12">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
+            className="w-full flex flex-col items-start"
           >
-            <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-4 text-foreground">
+            <div className="text-xs font-mono tracking-[0.25em] text-primary uppercase mb-3">
+              Certifications & Badges
+            </div>
+            <h2 className={`${serif.className} text-4xl sm:text-5xl md:text-7xl font-normal tracking-tight text-foreground mb-8`}>
               Credential Vault
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-transparent via-primary to-transparent rounded-full mt-2 mb-10 mx-auto"></div>
           </motion.div>
 
+          {/* Filter Category Tabs */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex flex-wrap justify-center gap-3"
+            className="flex flex-wrap gap-2.5"
           >
             {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
-                className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
+                className={`px-5 py-2 rounded-full text-xs font-mono font-semibold tracking-wider transition-all duration-300 ${
                   activeCategory === category 
-                    ? "bg-primary text-primary-foreground shadow-[0_0_20px_rgba(var(--primary-rgb),0.4)] scale-105" 
-                    : "bg-card/50 border border-border/50 text-muted-foreground hover:border-primary/50 hover:text-foreground"
+                    ? "bg-primary text-primary-foreground shadow-lg shadow-primary/25 scale-105" 
+                    : "bg-white/5 border border-white/10 text-muted-foreground hover:border-primary/50 hover:text-foreground"
                 }`}
               >
                 {category}
@@ -140,50 +148,54 @@ export function CertificationsSection() {
           </motion.div>
         </div>
 
-        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-4">
           <AnimatePresence mode="popLayout">
-            {filteredCerts.map((cert) => (
+            {filteredCerts.map((cert, index) => (
               <motion.div
                 layout
-                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                initial={{ opacity: 0, scale: 0.95, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.9, y: -20 }}
+                exit={{ opacity: 0, scale: 0.95, y: -20 }}
                 transition={{ duration: 0.4, type: "spring", bounce: 0.2 }}
                 key={cert.title}
-                className="group relative h-full flex flex-col p-8 rounded-[2rem] bg-card/20 backdrop-blur-md border border-border/40 hover:border-primary/50 hover:bg-card/40 transition-all duration-500 overflow-hidden shadow-lg hover:shadow-primary/5"
+                className="group relative h-full flex flex-col justify-between p-7 rounded-xl bg-card/40 backdrop-blur-2xl border border-white/10 hover:border-primary/50 transition-all duration-300 overflow-hidden shadow-xl hover:shadow-[0_0_30px_rgba(168,85,247,0.12)]"
               >
-                {/* Glow effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                {/* Top Accent Gradient Border Highlight on Hover */}
+                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 
-                <div className="relative z-10 flex flex-col h-full">
-                  <div className="flex justify-between items-start mb-6">
-                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
-                      <Award className="w-6 h-6 text-primary" />
+                {/* Subtle background glow */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                
+                <div className="relative z-10 flex flex-col h-full justify-between space-y-6">
+                  <div className="space-y-4">
+                    <div className="flex justify-between items-center">
+                      <div className="flex items-center gap-2">
+                        <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                        <span className="text-[11px] font-mono uppercase tracking-wider text-muted-foreground">
+                          {cert.organization}
+                        </span>
+                      </div>
+                      <Badge variant="outline" className="bg-white/5 border-white/10 text-[10px] font-mono py-0.5 text-muted-foreground uppercase">
+                        {cert.date}
+                      </Badge>
                     </div>
-                    <Badge variant="outline" className="bg-background/80 backdrop-blur-md border-border/50 text-xs py-1 text-muted-foreground">
-                      {cert.date}
-                    </Badge>
+                    
+                    <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors leading-tight">
+                      {cert.title}
+                    </h3>
                   </div>
                   
-                  <h3 className="text-xl md:text-2xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors leading-tight">
-                    {cert.title}
-                  </h3>
-                  
-                  <p className="text-sm md:text-base text-muted-foreground mb-6 font-medium tracking-wide">
-                    {cert.organization}
-                  </p>
-                  
-                  <div className="mt-auto pt-6 border-t border-border/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                    <div className="flex flex-wrap gap-2">
+                  <div className="pt-6 border-t border-white/10 flex items-center justify-between gap-4 mt-auto">
+                    <div className="flex flex-wrap gap-1.5">
                       {cert.skills.map((skill, i) => (
-                        <span key={i} className="text-[10px] uppercase tracking-widest px-2 py-1 rounded-md bg-foreground/5 text-foreground/70 font-semibold">
+                        <span key={i} className="text-[10px] font-mono uppercase tracking-widest px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-foreground/80 font-medium">
                           {skill}
                         </span>
                       ))}
                     </div>
                     
-                    <a href="#" className="inline-flex items-center text-sm font-bold text-primary hover:text-primary/80 transition-colors whitespace-nowrap group-hover:translate-x-1 duration-300">
-                      Verify <ExternalLink className="w-3.5 h-3.5 ml-1.5" />
+                    <a href="#" className="inline-flex items-center text-xs font-mono font-semibold text-primary hover:text-primary/80 transition-colors whitespace-nowrap group-hover:translate-x-0.5 duration-200">
+                      VERIFY <ArrowUpRight className="w-3.5 h-3.5 ml-1 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                     </a>
                   </div>
                 </div>

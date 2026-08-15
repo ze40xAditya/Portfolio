@@ -1,58 +1,109 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Award, BookOpen, Briefcase, GraduationCap, Star, TrendingUp } from "lucide-react";
+import { Award, BookOpen, Briefcase, GraduationCap, Star, TrendingUp, Sparkles } from "lucide-react";
+import { serif } from "@/app/fonts";
 
 export function AchievementDashboard() {
   const metrics = [
-    { label: "CGPA", value: "9.1+", icon: <GraduationCap className="w-5 h-5" /> },
-    { label: "Certifications", value: "10+", icon: <Award className="w-5 h-5" /> },
-    { label: "Projects", value: "5+", icon: <BookOpen className="w-5 h-5" /> },
-    { label: "Experiences", value: "3+", icon: <Briefcase className="w-5 h-5" /> },
-    { label: "Recommendations", value: "2", icon: <Star className="w-5 h-5" /> },
-    { label: "Industry Projects", value: "Multiple", icon: <TrendingUp className="w-5 h-5" /> },
+    { label: "ACADEMIC CGPA", value: "9.1+", icon: <GraduationCap className="w-4 h-4 text-primary" /> },
+    { label: "INDUSTRY CREDENTIALS", value: "10+", icon: <Award className="w-4 h-4 text-emerald-400" /> },
+    { label: "FEATURED PROJECTS", value: "5+", icon: <BookOpen className="w-4 h-4 text-purple-400" /> },
+    { label: "INDUSTRY ROLES", value: "3+", icon: <Briefcase className="w-4 h-4 text-cyan-400" /> },
+    { label: "RECOMMENDATIONS", value: "2", icon: <Star className="w-4 h-4 text-amber-400" /> },
+    { label: "ENTERPRISE SOLUTIONS", value: "MULTIPLE", icon: <TrendingUp className="w-4 h-4 text-indigo-400" /> },
   ];
 
+  // Tripled for infinite smooth continuous loop
+  const tickerRow1 = [...metrics, ...metrics, ...metrics];
+  const tickerRow2 = [...metrics.slice().reverse(), ...metrics.slice().reverse(), ...metrics.slice().reverse()];
+
   return (
-    <section className="py-24 relative overflow-hidden bg-primary/5">
-      <div className="container px-4 md:px-6 relative z-10">
-        <div className="flex flex-col items-center text-center mb-16">
+    <section className="py-28 relative overflow-hidden bg-background border-t border-border/30">
+      {/* Subtle ambient backdrops */}
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[300px] bg-primary/5 rounded-full blur-[160px] pointer-events-none" />
+
+      <div className="container px-4 sm:px-6 md:px-10 relative z-10 max-w-7xl mx-auto mb-12">
+        <div className="flex flex-col items-start">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
+            className="flex flex-col items-start"
           >
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">Achievement Dashboard</h2>
-            <div className="w-20 h-1 bg-primary mx-auto rounded-full mb-8"></div>
+            <div className="text-xs font-mono tracking-[0.25em] text-primary uppercase mb-3">
+              Metrics & Impact
+            </div>
+            <h2 className={`${serif.className} text-4xl sm:text-5xl md:text-7xl font-normal tracking-tight text-foreground`}>
+              Achievement Dashboard
+            </h2>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Infinite Kinetic Moving Text Marquees */}
+      <div className="space-y-6 select-none relative z-10">
+        {/* Row 1: Leftward Moving Text Stream */}
+        <div className="flex overflow-hidden group">
+          <motion.div
+            className="flex gap-4 shrink-0"
+            animate={{ x: ["0%", "-33.333%"] }}
+            transition={{
+              ease: "linear",
+              duration: 25,
+              repeat: Infinity,
+            }}
+          >
+            {tickerRow1.map((item, idx) => (
+              <div
+                key={idx}
+                className="flex items-center gap-3 px-6 py-3.5 rounded-full bg-card/40 backdrop-blur-2xl border border-white/10 group-hover:border-primary/40 transition-all duration-300 shadow-lg shrink-0"
+              >
+                <div className="p-1.5 rounded-full bg-white/5 border border-white/10">
+                  {item.icon}
+                </div>
+                <span className="text-xl sm:text-2xl font-bold font-mono text-foreground tracking-tight">
+                  {item.value}
+                </span>
+                <span className="text-xs font-mono text-muted-foreground uppercase tracking-widest pl-1">
+                  {item.label}
+                </span>
+                <Sparkles className="w-3 h-3 text-primary/40 ml-2" />
+              </div>
+            ))}
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 max-w-5xl mx-auto">
-          {metrics.map((metric, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="flex flex-col items-center justify-center p-6 rounded-3xl bg-card border border-border hover:border-primary/50 transition-colors group"
-            >
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform">
-                {metric.icon}
-              </div>
-              <motion.span 
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
-                className="text-4xl md:text-5xl font-bold text-foreground mb-2"
+        {/* Row 2: Rightward Moving Text Stream */}
+        <div className="flex overflow-hidden group">
+          <motion.div
+            className="flex gap-4 shrink-0"
+            animate={{ x: ["-33.333%", "0%"] }}
+            transition={{
+              ease: "linear",
+              duration: 28,
+              repeat: Infinity,
+            }}
+          >
+            {tickerRow2.map((item, idx) => (
+              <div
+                key={idx}
+                className="flex items-center gap-3 px-6 py-3.5 rounded-full bg-card/40 backdrop-blur-2xl border border-white/10 group-hover:border-primary/40 transition-all duration-300 shadow-lg shrink-0"
               >
-                {metric.value}
-              </motion.span>
-              <span className="text-sm md:text-base text-muted-foreground text-center uppercase tracking-wider font-medium">{metric.label}</span>
-            </motion.div>
-          ))}
+                <div className="p-1.5 rounded-full bg-white/5 border border-white/10">
+                  {item.icon}
+                </div>
+                <span className="text-xl sm:text-2xl font-bold font-mono text-foreground tracking-tight">
+                  {item.value}
+                </span>
+                <span className="text-xs font-mono text-muted-foreground uppercase tracking-widest pl-1">
+                  {item.label}
+                </span>
+                <Sparkles className="w-3 h-3 text-primary/40 ml-2" />
+              </div>
+            ))}
+          </motion.div>
         </div>
       </div>
     </section>

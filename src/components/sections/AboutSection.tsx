@@ -1,85 +1,109 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { User, Award, Briefcase, Target } from "lucide-react";
+import { serif } from "@/app/fonts";
+import { ScrollRevealText, ScrollRevealCard } from "@/components/ui/ScrollReveal";
 
 export function AboutSection() {
-  const highlights = [
+  const corePillars = [
     {
-      icon: <User className="w-6 h-6 text-primary" />,
-      title: "Multidisciplinary",
-      description: "Expertise spanning Analytics, AI, Product Management, and Web Development.",
+      number: "01",
+      title: "Analytical & Technical Rigor",
+      description: "Combining computer science fundamentals with structured problem-solving to architect clean, efficient, and scalable software solutions.",
     },
     {
-      icon: <Briefcase className="w-6 h-6 text-primary" />,
-      title: "Real-World Impact",
-      description: "Contributed to digital transformation for startups and financial organizations.",
+      number: "02",
+      title: "Data & Intelligence Driven",
+      description: "Leveraging data analytics, artificial intelligence, and predictive modeling to translate complex information into actionable insights.",
     },
     {
-      icon: <Award className="w-6 h-6 text-primary" />,
-      title: "Recognized Certifications",
-      description: "Credentials from NVIDIA, Oracle, McKinsey, Atlassian, and LinkedIn.",
+      number: "03",
+      title: "Product-Minded Engineering",
+      description: "Designing end-to-end digital experiences focused on high usability, performance, user impact, and business value.",
     },
     {
-      icon: <Target className="w-6 h-6 text-primary" />,
-      title: "Vision",
-      description: "Building impactful tech products through data-driven scalable solutions.",
+      number: "04",
+      title: "Continuous Acquisition",
+      description: "Relentless commitment to mastering emerging technologies, industry frameworks, and advanced engineering practices.",
     },
   ];
 
   return (
-    <section id="about" className="py-32 relative overflow-hidden bg-background">
-      {/* Decorative gradient for depth */}
-      <div className="absolute right-0 bottom-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
+    <section id="about" className="py-28 relative overflow-hidden bg-background border-t border-border/30">
+      {/* Subtle background ambient light */}
+      <div className="absolute right-10 top-1/3 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[140px] pointer-events-none" />
 
-      <div className="container px-4 md:px-8 relative z-10 max-w-7xl mx-auto">
-        <div className="flex flex-col items-center text-center mb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-4 text-foreground">
-              My Core Philosophy
+      <div className="container px-4 sm:px-6 md:px-10 relative z-10 max-w-7xl mx-auto">
+        {/* Editorial Section Header */}
+        <div className="flex flex-col items-start mb-16">
+          <ScrollRevealText>
+            <div className="text-xs font-mono tracking-[0.25em] text-primary uppercase mb-3">
+              About Me
+            </div>
+            <h2 className={`${serif.className} text-4xl sm:text-5xl md:text-7xl font-normal tracking-tight text-foreground`}>
+              Engineering with Purpose & Precision
             </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-transparent via-primary to-transparent rounded-full mt-2 mb-8 mx-auto"></div>
-          </motion.div>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-xl md:text-2xl text-muted-foreground max-w-4xl leading-relaxed font-light"
-          >
-            I am a B.Tech CSE student at Government Engineering College, Jaipur with expertise in <strong className="text-foreground font-semibold">Data Analytics, Product Strategy & Management, and Smart Business Solution & Execution</strong>.
-            <br className="hidden md:block" />
-            <br className="hidden md:block" />
-            As a multi-certified professional with credentials from McKinsey Forward, Atlassian, and Financial Markets programs, I am recognized for <strong className="text-foreground font-semibold">data-driven insights, strategic problem-solving, and building high-impact tech solutions</strong>.
-          </motion.p>
+          </ScrollRevealText>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {highlights.map((item, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: 0.2 + index * 0.1, ease: "easeOut" }}
-              className="group relative p-8 rounded-3xl bg-card/20 backdrop-blur-md border border-border/40 hover:border-primary/50 transition-all duration-500 overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="relative z-10 flex flex-col h-full">
-                <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-primary/20 transition-transform duration-500">
-                  {item.icon}
+        {/* Professional Editorial Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+          {/* Left Column: Personal Narrative */}
+          <div className="lg:col-span-6 space-y-6">
+            <ScrollRevealText delay={0.1}>
+              <p className="text-xl sm:text-2xl text-foreground font-light leading-relaxed">
+                I am a Computer Science Engineering undergraduate at <strong className="font-semibold text-primary">Government Engineering College Jaipur (9.1+ CGPA)</strong>, driven by a deep fascination for intelligent software, data systems, and strategic product development.
+              </p>
+            </ScrollRevealText>
+
+            <ScrollRevealText delay={0.2}>
+              <p className="text-base sm:text-lg text-muted-foreground font-light leading-relaxed">
+                My approach sits at the intersection of computer science rigor and data intelligence. I focus on breaking down complex real-world challenges into structured engineering problems, building systems that are robust, performant, and visually refined.
+              </p>
+            </ScrollRevealText>
+
+            <ScrollRevealText delay={0.3}>
+              <div className="pt-4 flex items-center gap-8 border-t border-white/10">
+                <div>
+                  <span className="block text-2xl font-bold font-mono text-foreground">9.1+</span>
+                  <span className="text-xs font-mono text-muted-foreground uppercase tracking-wider">Academic CGPA</span>
                 </div>
-                <h3 className="text-xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors">{item.title}</h3>
-                <p className="text-muted-foreground text-base leading-relaxed font-medium">{item.description}</p>
+                <div className="h-8 w-px bg-white/10" />
+                <div>
+                  <span className="block text-2xl font-bold font-mono text-foreground">B.Tech CSE</span>
+                  <span className="text-xs font-mono text-muted-foreground uppercase tracking-wider">Engineering Major</span>
+                </div>
               </div>
-            </motion.div>
-          ))}
+            </ScrollRevealText>
+          </div>
+
+          {/* Right Column: Clean Editorial List with Staggered Points 2 & 4 */}
+          <div className="lg:col-span-6 space-y-6">
+            {corePillars.map((pillar, idx) => {
+              const isShiftedRight = idx % 2 === 1; // Points 02 and 04
+              return (
+                <ScrollRevealCard key={idx} delay={0.1 + idx * 0.08}>
+                  <div
+                    className={`group relative pb-6 border-b border-white/10 hover:border-primary/50 transition-all duration-300 ${
+                      isShiftedRight ? "sm:pl-16 md:pl-24 lg:pl-28" : ""
+                    }`}
+                  >
+                    <div className="flex items-start justify-between mb-2">
+                      <div className="flex items-center gap-3">
+                        <span className="font-mono text-xs font-semibold text-primary/70">{pillar.number}</span>
+                        <h3 className="text-lg sm:text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+                          {pillar.title}
+                        </h3>
+                      </div>
+                    </div>
+                    <p className="text-sm text-muted-foreground font-light leading-relaxed pl-7">
+                      {pillar.description}
+                    </p>
+                  </div>
+                </ScrollRevealCard>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

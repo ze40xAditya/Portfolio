@@ -1,123 +1,128 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, ExternalLink } from "lucide-react";
+import { ArrowUpRight, Code2 } from "lucide-react";
+import { serif } from "@/app/fonts";
+import { ScrollRevealText, ScrollRevealCard } from "@/components/ui/ScrollReveal";
 
 export function ProjectsSection() {
   const projects = [
     {
+      id: "01",
       title: "Wealth Management Suite",
-      description: "Advanced finance-focused digital tools for investment planning and estimation.",
+      description: "Advanced finance-focused digital tools for investment planning, growth projection, and risk estimation.",
       technologies: ["React", "Next.js", "Financial Math", "Data Viz"],
       type: "Finance Product",
       colSpan: "lg:col-span-2",
-      gradient: "from-blue-600/20 to-purple-600/20",
+      gradient: "from-blue-600/20 via-purple-600/10 to-transparent",
     },
     {
+      id: "02",
       title: "Adinath Finserv",
-      description: "Digital transformation for a wealth management firm generating ₹1 Cr+ AUM.",
+      description: "Digital transformation for a wealth management firm generating ₹1 Cr+ AUM with high client conversion.",
       technologies: ["Next.js", "React", "Tailwind CSS"],
-      type: "Freelance",
+      type: "Freelance Client",
       colSpan: "lg:col-span-1",
-      gradient: "from-emerald-600/20 to-teal-600/20",
+      gradient: "from-emerald-600/20 via-teal-600/10 to-transparent",
     },
     {
+      id: "03",
       title: "Building Bites",
-      description: "Responsive business platform with integrated health analytics calculators.",
+      description: "Responsive business platform with integrated health analytics calculators and interactive client dashboard.",
       technologies: ["React", "Node.js", "Tailwind CSS"],
-      type: "Freelance",
+      type: "Freelance Client",
       colSpan: "lg:col-span-1",
-      gradient: "from-orange-600/20 to-red-600/20",
+      gradient: "from-orange-600/20 via-red-600/10 to-transparent",
     },
     {
+      id: "04",
       title: "Garage Management System",
-      description: "Full-stack garage management platform for workshop operations and records.",
-      technologies: ["PHP", "Database Management", "UI/UX Design"],
-      type: "Full Stack",
+      description: "Full-stack garage management platform for workshop operations, record keeping, and inventory tracking.",
+      technologies: ["PHP", "MySQL", "UI/UX Design"],
+      type: "Full Stack System",
       colSpan: "lg:col-span-2",
-      gradient: "from-primary/20 to-blue-600/20",
+      gradient: "from-primary/20 via-indigo-600/10 to-transparent",
     },
     {
+      id: "05",
       title: "Forecasting Dashboards",
-      description: "Business insight visualization and demand prediction tools using AI.",
-      technologies: ["Python", "Power BI", "Data Cleaning"],
+      description: "Business insight visualization and demand prediction tools using machine learning models and Power BI.",
+      technologies: ["Python", "Power BI", "Data Modeling"],
       type: "Data Analytics",
-      colSpan: "lg:col-span-3", // spans full width at the bottom
-      gradient: "from-purple-600/20 to-pink-600/20",
+      colSpan: "lg:col-span-3",
+      gradient: "from-purple-600/20 via-pink-600/10 to-transparent",
     },
   ];
 
   return (
-    <section id="projects" className="py-32 relative overflow-hidden bg-background">
-      {/* Background glow */}
-      <div className="absolute right-0 top-1/3 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+    <section id="projects" className="py-28 relative overflow-hidden bg-background border-t border-border/30">
+      {/* Ambient background glow */}
+      <div className="absolute right-0 top-1/3 w-[550px] h-[550px] bg-primary/10 rounded-full blur-[140px] pointer-events-none" />
 
-      <div className="container px-4 md:px-8 relative z-10 max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="flex flex-col items-center md:items-start text-center md:text-left mb-20"
-        >
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-4 text-foreground">
-            Selected Works
+      <div className="container px-4 sm:px-6 md:px-10 relative z-10 max-w-7xl mx-auto">
+        <ScrollRevealText className="flex flex-col items-start mb-16">
+          <div className="text-xs font-mono tracking-[0.25em] text-primary uppercase mb-3">
+            Featured Portfolio & Systems
+          </div>
+          <h2 className={`${serif.className} text-4xl sm:text-5xl md:text-7xl font-normal tracking-tight text-foreground`}>
+            Selected Works & Products
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary to-transparent rounded-full mt-2"></div>
-        </motion.div>
+        </ScrollRevealText>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {projects.map((project, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.7, delay: index * 0.1 }}
-              className={`group relative h-full min-h-[400px] rounded-[2.5rem] overflow-hidden bg-card/20 border border-border/40 hover:border-primary/50 transition-colors duration-500 flex flex-col justify-end ${project.colSpan}`}
-            >
-              {/* Dynamic Gradient Background */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-40 group-hover:opacity-80 group-hover:scale-105 transition-all duration-700 ease-out`} />
-              
-              {/* Glass Overlay for Text */}
-              <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/60 to-transparent pointer-events-none" />
+            <ScrollRevealCard key={index} delay={index * 0.08} className={project.colSpan}>
+              <div className="group relative h-full min-h-[360px] rounded-xl overflow-hidden bg-card/40 backdrop-blur-2xl border border-white/10 hover:border-primary/50 transition-all duration-500 flex flex-col justify-between p-8 sm:p-10 shadow-xl hover:shadow-[0_0_35px_rgba(168,85,247,0.15)]">
+                {/* Top Accent Gradient Line on Hover */}
+                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-              <div className="relative z-10 p-8 md:p-10 w-full mt-auto translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                {/* Dynamic Gradient Background */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-40 group-hover:opacity-80 transition-all duration-700 pointer-events-none`} />
                 
-                <Badge variant="outline" className="mb-4 bg-background/50 backdrop-blur-md border-primary/30 text-primary uppercase tracking-widest text-xs px-3 py-1">
-                  {project.type}
-                </Badge>
-                
-                <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-3 leading-tight group-hover:text-primary transition-colors duration-300">
-                  {project.title}
-                </h3>
-                
-                <p className="text-muted-foreground text-lg mb-6 max-w-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 h-0 group-hover:h-auto overflow-hidden">
-                  {project.description}
-                </p>
+                {/* Top System Header Bar */}
+                <div className="relative z-10 flex items-center justify-between mb-8">
+                  <div className="flex items-center gap-2">
+                    <Code2 className="w-4 h-4 text-primary" />
+                    <span className="text-xs font-mono tracking-widest text-muted-foreground uppercase">
+                      SYSTEM // PROJ_{project.id}
+                    </span>
+                  </div>
 
-                <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-border/30">
+                  <Badge variant="outline" className="bg-white/5 border-white/10 text-primary font-mono uppercase tracking-widest text-[10px] px-3 py-1">
+                    {project.type}
+                  </Badge>
+                </div>
+
+                {/* Main Content Area */}
+                <div className="relative z-10 space-y-4 my-auto">
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground leading-tight group-hover:text-primary transition-colors duration-300">
+                    {project.title}
+                  </h3>
+                  
+                  <p className="text-muted-foreground text-sm sm:text-base font-light leading-relaxed max-w-2xl">
+                    {project.description}
+                  </p>
+                </div>
+
+                {/* Bottom Footer Area */}
+                <div className="relative z-10 pt-6 mt-8 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
                   <div className="flex flex-wrap gap-2">
                     {project.technologies.map((tech, i) => (
-                      <span key={i} className="text-sm font-medium text-foreground/70 bg-foreground/5 px-3 py-1 rounded-full">
+                      <span key={i} className="text-xs font-mono text-foreground/80 bg-white/5 border border-white/10 px-3 py-1 rounded-md">
                         {tech}
                       </span>
                     ))}
                   </div>
                   
-                  <div className="flex gap-3">
-                     <Button size="icon" variant="secondary" className="rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground transition-all">
-                       <ExternalLink className="w-4 h-4" />
-                     </Button>
-                     <Button size="icon" className="rounded-full bg-foreground text-background hover:bg-primary transition-all">
-                       <ArrowRight className="w-4 h-4" />
-                     </Button>
-                  </div>
+                  <a
+                    href="#contact"
+                    className="inline-flex items-center text-xs font-mono font-bold text-primary hover:text-primary/80 transition-colors uppercase tracking-wider group-hover:translate-x-0.5 duration-200"
+                  >
+                    EXPLORE <ArrowUpRight className="w-3.5 h-3.5 ml-1 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  </a>
                 </div>
               </div>
-            </motion.div>
+            </ScrollRevealCard>
           ))}
         </div>
       </div>

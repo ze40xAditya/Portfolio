@@ -127,18 +127,23 @@ export function AIAssistant() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
-            whileHover={{ scale: 1.1 }}
+            whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.95 }}
-            className="fixed bottom-6 right-6 z-50"
+            className="fixed bottom-6 right-6 z-50 flex items-center gap-3"
           >
-            <div className="absolute inset-0 bg-primary/20 rounded-full blur-xl animate-pulse"></div>
-            <Button 
-              size="icon" 
-              className="relative w-16 h-16 rounded-full shadow-[0_0_30px_rgba(var(--primary-rgb),0.5)] bg-primary hover:bg-primary/90 border border-primary/20"
-              onClick={() => setIsOpen(true)}
-            >
-              <Sparkles className="w-7 h-7 text-primary-foreground" />
-            </Button>
+            <div className="hidden md:flex items-center px-3.5 py-1.5 rounded-full bg-card/80 border border-primary/30 backdrop-blur-md shadow-xl text-xs font-semibold text-foreground">
+              Ask AI Assistant
+            </div>
+            <div className="relative">
+              <div className="absolute inset-0 bg-primary/30 rounded-full blur-xl animate-pulse" />
+              <Button 
+                size="icon" 
+                className="relative w-14 h-14 rounded-full shadow-[0_0_30px_rgba(168,85,247,0.5)] bg-primary hover:bg-primary/90 border border-primary/30"
+                onClick={() => setIsOpen(true)}
+              >
+                <Sparkles className="w-6 h-6 text-primary-foreground" />
+              </Button>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -150,20 +155,20 @@ export function AIAssistant() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ type: "spring", stiffness: 200, damping: 20 }}
-            className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 w-[calc(100vw-2rem)] sm:w-[420px] h-[600px] max-h-[calc(100vh-2rem)] bg-card/95 backdrop-blur-2xl border border-primary/20 rounded-3xl shadow-2xl flex flex-col z-50 overflow-hidden"
+            className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 w-[calc(100vw-2rem)] sm:w-[420px] h-[600px] max-h-[calc(100vh-2rem)] bg-card/95 backdrop-blur-2xl border border-primary/30 rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.5)] flex flex-col z-50 overflow-hidden"
           >
             {/* Header */}
-            <div className="flex items-center justify-between p-5 border-b border-border/40 bg-background/40">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center relative">
-                  <div className="absolute inset-0 bg-primary/20 rounded-full blur-md animate-pulse"></div>
+            <div className="flex items-center justify-between p-5 border-b border-border/40 bg-background/50 backdrop-blur-md">
+              <div className="flex items-center gap-3.5">
+                <div className="w-11 h-11 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center relative shadow-inner">
+                  <div className="absolute inset-0 bg-primary/20 rounded-full blur-md animate-pulse" />
                   <Bot className="w-6 h-6 text-primary relative z-10" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-base tracking-tight text-foreground">Portfolio Assistant</h3>
-                  <p className="text-xs text-primary/80 flex items-center gap-1.5 font-medium mt-0.5">
-                    <span className="w-2 h-2 rounded-full bg-green-500 inline-block animate-pulse shadow-[0_0_8px_#22c55e]"></span> 
-                    Offline Mode Ready
+                  <h3 className="font-bold text-base tracking-tight text-foreground">Aditya&apos;s AI Assistant</h3>
+                  <p className="text-xs text-emerald-400 flex items-center gap-1.5 font-medium mt-0.5">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 inline-block animate-pulse shadow-[0_0_8px_#22c55e]" /> 
+                    Online & Ready
                   </p>
                 </div>
               </div>

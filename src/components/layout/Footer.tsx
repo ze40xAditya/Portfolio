@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Mail } from "lucide-react";
 
 function GithubIcon(props: React.SVGProps<SVGSVGElement>) {
@@ -42,13 +43,21 @@ function LinkedinIcon(props: React.SVGProps<SVGSVGElement>) {
 
 export function Footer() {
   return (
-    <footer className="bg-card border-t border-border py-12 relative overflow-hidden">
+    <footer className="bg-card/40 border-t border-border/50 py-16 relative overflow-hidden">
       <div className="container px-4 md:px-6 relative z-10 flex flex-col items-center">
-        <div className="flex items-center gap-2 mb-8">
-          <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-bold text-2xl">
-            A
+        <div className="flex items-center gap-3 mb-6 group">
+          <div className="p-1 rounded-xl bg-card border border-border/50 shadow-md group-hover:border-primary/50 transition-colors">
+            <Image
+              src="/AC-logo.png"
+              alt="Aditya Logo"
+              width={40}
+              height={40}
+              className="w-10 h-10 rounded-lg object-contain"
+            />
           </div>
-          <span className="font-bold text-2xl tracking-tight">Aditya.</span>
+          <span className="font-bold text-2xl tracking-tight text-foreground">
+            Aditya<span className="text-primary">.</span>
+          </span>
         </div>
 
         <p className="text-xl md:text-2xl font-medium text-center max-w-2xl text-foreground mb-10 leading-snug">
