@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { serif } from "@/app/fonts";
 import "./globals.css";
 import { AIAssistant } from "@/components/layout/AIAssistant";
+import { SmoothScroll } from "@/components/layout/SmoothScroll";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,14 +18,16 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://adityachaturvedi.dev"),
   title: {
-    default: "Aditya Chaturvedi | Data Analytics & Artificial Intelligence",
+    default: "Aditya Chaturvedi | Data Analytics | Artificial Intelligence | CS Engineer",
     template: "%s | Aditya Chaturvedi",
   },
   description:
-    "Portfolio of Aditya Chaturvedi — B.Tech Computer Science Engineer (9.1+ CGPA) & Data Analytics Intern at Intime Tec. Specializing in Power BI, Python, AI Agents, Forecasting, Product Strategy & Web Development.",
+    "Portfolio of Aditya Chaturvedi — B.Tech Computer Science Engineer (9.1+ CGPA). Specializing in Data Analytics, Artificial Intelligence, Power BI, Python, AI Agents, Forecasting, Product Strategy & Web Development.",
   keywords: [
     "Aditya Chaturvedi",
-    "Data Analytics Intern",
+    "Data Analytics",
+    "Artificial Intelligence",
+    "CS Engineer",
     "Computer Science Engineer",
     "Intime Tec",
     "Government Engineering College Jaipur",
@@ -55,9 +58,9 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
-    title: "Aditya Chaturvedi | Data Analytics Intern & CS Engineer",
+    title: "Aditya Chaturvedi | Data Analytics | Artificial Intelligence | CS Engineer",
     description:
-      "Computer Science Engineer & Data Analytics Intern specializing in AI Agents, Power BI, Python, and Product Strategy.",
+      "Computer Science Engineer specializing in Data Analytics, Artificial Intelligence, AI Agents, Power BI, Python, and Product Strategy.",
     url: "https://adityachaturvedi.dev",
     siteName: "Aditya Chaturvedi Portfolio",
     images: [
@@ -73,9 +76,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Aditya Chaturvedi | Data Analytics Intern & CS Engineer",
+    title: "Aditya Chaturvedi | Data Analytics | Artificial Intelligence | CS Engineer",
     description:
-      "Computer Science Engineer & Data Analytics Intern specializing in AI Agents, Power BI, Python, and Product Strategy.",
+      "Computer Science Engineer specializing in Data Analytics, Artificial Intelligence, AI Agents, Power BI, Python, and Product Strategy.",
     images: ["/AC-logo.png"],
     creator: "@ze40xAditya",
   },
@@ -93,8 +96,6 @@ export const metadata: Metadata = {
   manifest: "/manifest.json",
 };
 
-import { SmoothScroll } from "@/components/layout/SmoothScroll";
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -104,7 +105,7 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Aditya Chaturvedi",
-    "jobTitle": "Data Analytics Intern & Computer Science Engineer",
+    "jobTitle": "Data Analytics | Artificial Intelligence | CS Engineer",
     "url": "https://adityachaturvedi.dev",
     "image": "https://adityachaturvedi.dev/AC-logo.png",
     "worksFor": {
@@ -122,6 +123,7 @@ export default function RootLayout({
     ],
     "knowsAbout": [
       "Data Analytics",
+      "Artificial Intelligence",
       "Power BI",
       "Python",
       "AI Agents",
